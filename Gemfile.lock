@@ -783,6 +783,7 @@ DEPENDENCIES
   guard-rubocop (= 1.2.0)
   haml (= 4.0.6)
   handlebars_assets (= 0.20.1)
+  heroku-api
   http_accept_language (= 2.0.5)
   i18n-inflector-rails (= 1.0.7)
   jasmine (= 2.2.0)
