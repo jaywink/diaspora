@@ -2,5 +2,12 @@
  *   licensed under the Affero General Public License version 3 or later.  See
  *   the COPYRIGHT file.
  */
-//= require jquery.autoSuggest.custom
+
+$(document).ready(function () {
+  
+  $('.additional-visibility-icon').click(function() {
+    $('input#profile_is_public').prop('checked', ! $('input#profile_is_public').prop('checked'));
+    $('.additional-visibility-icon').toggle();
+  });
+});
 

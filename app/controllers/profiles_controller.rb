@@ -19,6 +19,8 @@ class ProfilesController < ApplicationController
   end
 
   def edit
+    @css_framework = :bootstrap
+    @include_application_css = true
     @person = current_user.person
     @aspect  = :person_edit
     @profile = @person.profile
