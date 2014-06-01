@@ -35,15 +35,17 @@ app.views.Base = Backbone.View.extend({
 
   renderTemplate : function(){
     var presenter = _.isFunction(this.presenter) ? this.presenter() : this.presenter
-    this.template = JST[this.templateName+"_tpl"]
-    if(!this.template) {
-      console.log(this.templateName ? ("no template for " + this.templateName) : "no templateName specified")
-    }
+    if (typeof JST != "undefined") {
+      this.template = JST[this.templateName+"_tpl"]
+      if(!this.template) {
+        console.log(this.templateName ? ("no template for " + this.templateName) : "no templateName specified")
+      }
 
-    this.$el
-      .html(this.template(presenter))
-      .attr("data-template", _.last(this.templateName.split("/")));
-    this.postRenderTemplate();
+      this.$el
+        .html(this.template(presenter))
+        .attr("data-template", _.last(this.templateName.split("/")));
+      this.postRenderTemplate();
+    }
   },
 
   postRenderTemplate : $.noop, //hella callbax yo

@@ -12,7 +12,7 @@
         ajaxLoader: dropdown.find(".ajax_loader")
       });
 
-      if( ! $.browser.msie ) {
+      if( typeof $.browser != "undefined" && ! $.browser.msie ) {
         self.badge.on('click', self.badgeLink, function(evt){
           evt.preventDefault();
           evt.stopPropagation();
