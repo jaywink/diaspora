@@ -1,0 +1,91 @@
+:css
+    h2 a {  color: #333333; }
+:javascript
+    $(function() {
+        $('.detail-text').click(function(ev) {
+            ev.preventDefault();
+            var elem = $(ev.currentTarget);
+            $('#detail-container').html(elem.data('text'));
+        });
+    });
+
+- what_is_diaspora = '<h3>what is diaspora*?</h3> |
+    <p>diaspora* is an awesome decentralized open source social network full of really cool people. Instead of being owned and controlled by a single corporation, all the pods (servers) in the diaspora* network are totally independent and controlled usually by single individuals.</p> |
+    <p> The project, which is run by a community of volunteers, builds the software which is free to use by anyone. You can easily run a pod yourself too, or if you don\'t want to, check out some of the open pods and go create an account!</p> |
+    <div> |
+        <a class="btn btn-primary" href="https://diasporafoundation.org" target="_blanc">More information</a> |
+        <a class="btn btn-success" href="http://pods.jasonrobinson.me">Find a pod</a> |
+    </div>' |
+-
+- about_this_pod = '<h3>about this pod</h3> |
+    <p>I Like Toast is maintained by <a href="https://iliketoast.net/u/jaywink">Jason Robinson</a> as a free service to the diaspora* community. |
+    Occasionally invitations will be closed to make sure the pod keep runnings smoothly, but when invitations are open, anyone is welcome |
+    to create an account. By creating an account you agree to the <a href="https://iliketoast.net/terms">terms of service and privacy policy</a>. Please |
+    read these carefully before creating an account.</p> |
+    <h3>code version</h3> |
+    <p>This pod runs on the development branch of the diaspora* source code. <b>This means things will occasionally break</b>, though every effort will |
+    made to make sure this doesn\'t happen often. Changelogs of new features and fixes will be posted to the |
+    <a href="https://iliketoast.net/u/podmin">podmin account</a>, so it makes sense to follow that.</p> |
+    <div> |
+        <a class="btn btn-info" href="https://iliketoast.net/terms">Terms of Service</a> |
+        <a class="btn btn-success" href="http://iliketoast.net/u/podmin">Pod news</a> |
+    </div>' |
+-
+- help_us = '<h3>help us</h3> |
+    <p>If you find this pod useful to you and make daily use of it, it makes me happy. :) But let\'s face it, running a bunch of servers doesn\'t |
+    come without costs. Any donations are highly encouraged and will make sure that I can keep this pod running at full speed.</p> |
+    <h3>other ways to help</h3> |
+    <p>You don\'t need money to help running this pod. If you can do user interface design, write code or are just in general a creative person and want to help |
+    push diaspora* forward, please check out the <a href="https://diasporafoundation.org/get_involved">how to get involved</a> page for ways to help. |
+    Helping diaspora* directly helps this pod too! |
+    <div> |
+        <a class="btn btn-success" href="https://diasporafoundation.org/get_involved">Learn more about contributing</a> |
+    </div>' |
+
+%div{:class => "span12", :style => "margin-top: 30px; margin-left: 0"}
+    %div{:class => "hero-unit text-center"}
+        %h1{:style => "font-size: 128px; font-family: 'Courier New', Courier, monospace;"}
+            I Like Toast
+    %div{:class => "span8 text-center"}
+        %div{:class => "row"}
+            %div{:class => "span4 text-right", :style => "padding-top: 50px;"}
+                %h2
+                    %a{:href => "#", :class => "detail-text", :data => {:text => "#{what_is_diaspora}"}}
+                        what is diaspora*?
+                %h2
+                    %a{:href => "#", :class => "detail-text", :data => {:text => "#{about_this_pod}"}}
+                        about this pod
+                %h2
+                    %a{:href => "#", :class => "detail-text", :data => {:text => "#{help_us}"}}
+                        help us
+            %div{:class => "span4"}
+                %img{:src => "#{image_path('toast.png')}"}
+        %div{:class => "row", :id => "detail-row"}
+            %hr
+            %div{:class => "offset2 span8 text-left", :id => "detail-container", :style => "margin-bottom: 30px;"}
+        %div{:id => "donations", :class => "row"}
+            %div{:class => "span12 text-center"}
+                %span
+                    %script{:type => "text/javascript", :src => "//gttp.co/v1.js", :data => {:gittip_username => "jaywink", :gittip_widget => "button"}}
+                %span
+                    %script{:id => "fbn7hs9"}
+                        (function(i){var f,s=document.getElementById(i);f=document.createElement('iframe');f.src='//api.flattr.com/button/view/?uid=jaywink&button=compact&url='+encodeURIComponent(document.URL);f.title='Flattr';f.height=20;f.width=110;f.style.borderWidth=0;s.parentNode.insertBefore(f,s);})('fbn7hs9');
+            %div{:class => "offset3 span4 text-center"}
+                %span
+                    %dl{:class => "dl-horizontal"}
+                        %dt
+                            BTC
+                        %dd
+                            1NvzSejpWwzmozJGuHo3L2e5Z2fzxRj3TB
+                        %dt
+                            XPM
+                        %dd
+                            AZvfhRmq9sxi4Sv4dG3ykckzEGyCbujRsn
+                        %dt
+                            LTC
+                        %dd
+                            LNL4N2X7jxqVvJVTMPVPD1G5R7DY2xcy9R
+                        %dt
+                            RDD
+                        %dd
+                            RZkvg4N9dkUKG5Sz8csh5Pj5GaSyBHXSSV
