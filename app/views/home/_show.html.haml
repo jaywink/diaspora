@@ -42,50 +42,48 @@
         <a class="btn btn-success" href="https://diasporafoundation.org/get_involved">Learn more about contributing</a> |
     </div>' |
 
-%div{:class => "span12", :style => "margin-top: 30px; margin-left: 0"}
-    %div{:class => "hero-unit text-center"}
-        %h1{:style => "font-size: 128px; font-family: 'Courier New', Courier, monospace;"}
-            I Like Toast
-    %div{:class => "span8 text-center"}
-        %div{:class => "row"}
-            %div{:class => "span4 text-right", :style => "padding-top: 50px;"}
-                %h2
-                    %a{:href => "#", :class => "detail-text", :data => {:text => "#{what_is_diaspora}"}}
-                        what is diaspora*?
-                %h2
-                    %a{:href => "#", :class => "detail-text", :data => {:text => "#{about_this_pod}"}}
-                        about this pod
-                %h2
-                    %a{:href => "#", :class => "detail-text", :data => {:text => "#{help_us}"}}
-                        help us
-            %div{:class => "span4"}
-                %img{:src => "#{image_path('toast.png')}"}
-        %div{:class => "row", :id => "detail-row"}
-            %hr
-            %div{:class => "offset2 span8 text-left", :id => "detail-container", :style => "margin-bottom: 30px;"}
-        %div{:id => "donations", :class => "row"}
-            %div{:class => "span12 text-center"}
-                %span
-                    %script{:type => "text/javascript", :src => "//gttp.co/v1.js", :data => {:gittip_username => "jaywink", :gittip_widget => "button"}}
-                %span
-                    %script{:id => "fbn7hs9"}
-                        (function(i){var f,s=document.getElementById(i);f=document.createElement('iframe');f.src='//api.flattr.com/button/view/?uid=jaywink&button=compact&url='+encodeURIComponent(document.URL);f.title='Flattr';f.height=20;f.width=110;f.style.borderWidth=0;s.parentNode.insertBefore(f,s);})('fbn7hs9');
-            %div{:class => "offset3 span4 text-center"}
-                %span
-                    %dl{:class => "dl-horizontal"}
-                        %dt
-                            BTC
-                        %dd
-                            1NvzSejpWwzmozJGuHo3L2e5Z2fzxRj3TB
-                        %dt
-                            XPM
-                        %dd
-                            AZvfhRmq9sxi4Sv4dG3ykckzEGyCbujRsn
-                        %dt
-                            LTC
-                        %dd
-                            LNL4N2X7jxqVvJVTMPVPD1G5R7DY2xcy9R
-                        %dt
-                            RDD
-                        %dd
-                            RZkvg4N9dkUKG5Sz8csh5Pj5GaSyBHXSSV
+%div{:class => "container"}
+    %div{:class => "span12 text-center"}
+        %div{:class => "hero-unit text-center"}
+            %h1{:style => "font-size: 128px; font-family: 'Courier New', Courier, monospace;"}
+                I Like Toast
+        %div{:class => "span8 text-center"}
+            %div{:class => "row"}
+                %div{:class => "span4 text-right", :style => "padding-top: 50px;"}
+                    %h2
+                        %a{:href => "#", :class => "detail-text", :data => {:text => "#{what_is_diaspora}"}}
+                            what is diaspora*?
+                    %h2
+                        %a{:href => "#", :class => "detail-text", :data => {:text => "#{about_this_pod}"}}
+                            about this pod
+                    %h2
+                        %a{:href => "#", :class => "detail-text", :data => {:text => "#{help_us}"}}
+                            help us
+                %div{:class => "span4"}
+                    %img{:src => "#{image_path('toast.png')}"}
+            %div{:class => "row", :id => "detail-row"}
+                %hr
+                %div{:class => "offset2 span8 text-left", :id => "detail-container", :style => "margin-bottom: 30px;"}
+            %div{:id => "donations", :class => "row"}
+                %div{:class => "span12 text-center"}
+                    %span
+                        %script{:id => "fbn7hs9"}
+                            (function(i){var f,s=document.getElementById(i);f=document.createElement('iframe');f.src='//api.flattr.com/button/view/?uid=jaywink&button=compact&url='+encodeURIComponent(document.URL);f.title='Flattr';f.height=20;f.width=110;f.style.borderWidth=0;s.parentNode.insertBefore(f,s);})('fbn7hs9');
+                    %span{:style=>"display: inline-flex;"}
+                        %form{:action => "https://www.paypal.com/cgi-bin/webscr", :method=>"post", :target=>"_top"}
+                            %input{:type=>"hidden", :name=>"cmd", :value=>"_s-xclick"}
+                            %input{:type=>"hidden", :name=>"encrypted", :value=>"-----BEGIN PKCS7-----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-----END PKCS7-----"}
+                            %input{:type=>"image", :src=>"https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif", :border=>"0", :name=>"submit", :alt=>"PayPal - The safer, easier way to pay online!"}
+                            %img{:alt=>"", :border=>"0", :src=>"https://www.paypalobjects.com/en_US/i/scr/pixel.gif", :width=>"1", :height=>"1"}
+
+                %div{:class => "offset3 span4 text-center"}
+                    %span
+                        %dl{:class => "dl-horizontal"}
+                            %dt
+                                BTC
+                            %dd
+                                1NvzSejpWwzmozJGuHo3L2e5Z2fzxRj3TB
+                            %dt
+                                XPM
+                            %dd
+                                AZvfhRmq9sxi4Sv4dG3ykckzEGyCbujRsn
