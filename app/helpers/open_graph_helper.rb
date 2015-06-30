@@ -49,6 +49,10 @@ module OpenGraphHelper
     ].join("\n").html_safe
   end
 
+  def og_facebook_app_id
+    meta_tag_with_property('fb:app_id', AppConfig.services.facebook.app_id)
+  end
+
   def og_page_post_tags(post)
     tags = og_common_tags
 
@@ -59,7 +63,8 @@ module OpenGraphHelper
         og_title(post_page_title(post, :length => 140)),
         og_url(post_url(post)),
         og_image(post),
-        og_description(post.message.plain_text_without_markdown truncate: 1000)
+        og_description(post.message.plain_text_without_markdown truncate: 1000),
+        og_facebook_app_id
       ]
     end
 
