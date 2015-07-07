@@ -12,6 +12,15 @@ module Workers
       opts = HashWithIndifferentAccess.new(opts)
       opts[:services] = user.services.where(:type => opts.delete(:service_types))
 
+      # relay@relay.iliketoast.net
+      if object.respond_to?(:public?) && object.public?
+        if opts[:additional_subscribers].present?
+          opts[:additional_subscribers] += [30544]
+        else
+          opts[:additional_subscribers] = [30544]
+        end
+      end
+
       if opts[:additional_subscribers].present?
         opts[:additional_subscribers] = Person.where(:id => opts[:additional_subscribers])
       end
