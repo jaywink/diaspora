@@ -30,6 +30,16 @@ bind to an UNIX socket at `unix:tmp/diaspora.sock`. Please change your local
 
 With the port to Bootstrap 3, app/views/terms/default.haml has a new structure. If you have created a customised app/views/terms/terms.haml or app/views/terms/terms.erb file, you will need to edit those files to base your customisations on the new default.haml file.
 
+## Sidekiq queue changes
+
+We've decreased the amount of sidekiq queues from 13 to 5 in PR [#6530](https://github.com/diaspora/diaspora/pull/6530).
+The new queues are organized according to priority for the jobs they will process. When upgrading please make sure to 
+empty the sidekiq queues before shutting down the server for an update.
+
+If you run your sidekiq with a custom queue configuration, please make sure to update that for the new queues.
+
+The new queues are: `urgent, high, medium, low, default`.
+
 ## API authentication
 
 This release makes diaspora\* a OpenID Connect provider. This means you can authenticate to third parties with your diaspora\* account and let
@@ -94,7 +104,6 @@ Contributions are very welcome, the hard work is done!
 * Redesign and refactor report admin interface [#6378](https://github.com/diaspora/diaspora/pull/6378)
 * Add permalink icon to stream elements [#6457](https://github.com/diaspora/diaspora/pull/6457)
 * Move reshare count to interactions for stream elements [#6487](https://github.com/diaspora/diaspora/pull/6487)
-* Posts of ignored users are now visible on that profile page [#6617](https://github.com/diaspora/diaspora/pull/6617)
 
 # 0.5.6.0
 
@@ -109,8 +118,7 @@ Contributions are very welcome, the hard work is done!
 
 ## Features
 
-* Display hovercards without aspect dropdown when logged out [#6603](https://github.com/diaspora/diaspora/pull/6603)
-* Add media.ccc.de as a trusted oEmbed endpoint
+Display hovercards without aspect dropdown when logged out [#6603](https://github.com/diaspora/diaspora/pull/6603)
 
 # 0.5.5.1
 
