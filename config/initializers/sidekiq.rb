@@ -11,11 +11,56 @@ if AppConfig.environment.single_process_mode? && Rails.env != "test"
   require 'sidekiq/testing/inline'
 end
 
+require "objspace"
+ObjectSpace.trace_object_allocations_start
+Sidekiq.logger.info "allocations tracing enabled"
+
+module Sidekiq
+  module Middleware
+    module Server
+      class Profiler
+        # Number of jobs to process before reporting
+        JOBS = 100
+
+        class << self
+          mattr_accessor :counter
+          self.counter = 0
+
+          def synchronize(&block)
+            @lock ||= Mutex.new
+            @lock.synchronize(&block)
+          end
+        end
+
+        def call(worker_instance, item, queue)
+          begin
+            yield
+          ensure
+            self.class.synchronize do
+              self.class.counter += 1
+
+              if self.class.counter % JOBS == 0
+                Sidekiq.logger.info "reporting allocations after #{self.class.counter} jobs"
+                GC.start
+                output = File.open("heap#{self.class.counter}.json", "w")
+                ObjectSpace.dump_all(output: output)
+                output.close
+                Sidekiq.logger.info "heap saved to heap.json"
+              end
+            end
+          end
+        end
+      end
+    end
+  end
+end
+
 Sidekiq.configure_server do |config|
   config.redis = AppConfig.get_redis_options
 
   config.server_middleware do |chain|
-    chain.add SidekiqMiddlewares::CleanAndShortBacktraces
+#    chain.add SidekiqMiddlewares::CleanAndShortBacktraces
+    chain.add Sidekiq::Middleware::Server::Profiler
   end
 
   # Set connection pool on Heroku
